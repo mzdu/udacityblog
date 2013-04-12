@@ -1,0 +1,45 @@
+=========GET VS POST=============
+
+GET方法用来查询内容    有URL长度限制     会在cache里有存     会显示密码  是默认的form method
+
+POST方法是来修改内容    因为是隐藏的所以没有URL限制     不会存在cache里
+
+=======input type=========
+input type
+="Password"   在使用GET方法时，会显示密码内容啊！！！！
+="text"
+="checkbox"   /play.html?r=on&s=on
+="radio"       give them the same name   value="first"
+
+=======Label & Radio Button ============
+<form>
+<label>
+	One
+	<input type="radio" value="one" />
+</label>
+
+<label>
+	Two
+	<input type="radio" value="two" />
+</label>
+
+<label>
+	Threee
+	<input type="radio" value="three" />
+</label>
+</form>
+
+=========Dropdowns========
+即使没有value时候，也可以！ 选择第二个后 q=B
+<form>
+	<select name="q">
+		<option value="first">A</option>
+		<option>B</option>
+		<option value="third">C</option>
+	</select>
+</form>
+========Validation===========
+防止任意的传入数据，所以我们需要validate our data
+
+
+
