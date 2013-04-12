@@ -10,7 +10,11 @@
 # capitalized.
 #
 
-months = ['January',
+
+
+def valid_month(month):
+    
+    months1 = ['January',
           'February',
           'March',
           'April',
@@ -23,16 +27,16 @@ months = ['January',
           'November',
           'December']
 # convert a list to dictionary          
-month_abbvs = dict((m[:3].lower(), m) for m in months)
-
-def valid_month(month):
+    month_abbvs = dict((m[:3].lower(), m) for m in months1)
+    
+    
     if month:
         short_month = month[:3].lower()
         return month_abbvs.get(short_month)
 
     
-print valid_month("jansd")
-print month_abbvs
+#print valid_month("jansd")
+#print month_abbvs
 # valid_month("january") => "January"    
 # valid_month("January") => "January"
 # valid_month("foo") => None

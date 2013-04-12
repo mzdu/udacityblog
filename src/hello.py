@@ -18,15 +18,28 @@ form = '''
 
 
 class MainPage(webapp2.RequestHandler):
+    from valid-day import valid_day
+    from validatemonth2 import valid_month
+    from valid-year import valid_year
+    
 
-    def post(self):
-        self.response.headers['Content-Type'] = 'text/html'
-        self.response.out.write("That is a valid day.")
-     
- 
     def get(self):
         self.response.headers['Content-Type'] = 'text/html'
         self.response.out.write(form)
+
+    def post(self):
+        user_month = valid_month(self.request.get('month'))
+        user_day = valid_day(self.request.get('day'))
+        user_year = valid_year(self.request.get('year'))
+        
+        if not (user_month and user_day and user_year):
+            self.response.out.write(form)
+        else:
+            self.response.out.write("Correct!")
+        
+        
+ 
+
         
 
 app = webapp2.WSGIApplication([('/', MainPage)],
