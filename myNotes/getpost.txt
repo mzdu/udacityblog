@@ -41,5 +41,14 @@ input type
 ========Validation===========
 防止任意的传入数据，所以我们需要validate our data
 
+==========String substitution============
+given_string = "I think %s is a perfectly %s thing to do in public."
 
+def sub1(s, t):
+    return given_string % (s, t)
+    
+当使用dictionary作为参数时
+<div style="color: red">%(error123)s</div>
+
+是去这个词典 找别名为error123的项的数据   {"error123": error}  
 

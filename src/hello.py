@@ -4,43 +4,64 @@ form = '''
 <form method="POST">
     What is your birthday? <br />
     <label>Month
-        <input type="text" name="month" />
+        <input type="text" name="month" value=%(month)s />
     </label>
     <label>Date
-        <input type="text" name="date" />
+        <input type="text" name="date" value=%(day)s />
     </label>
     <label>Year
-    <input type="text" name="year" />
+    <input type="text" name="year" value=%(year)s />
     </label>
+    
+    <br />
+    <div style="color: red">%(error123)s</div>
+    <br />
+    
 <input type = "submit">      
 </form>
 '''
 
 
+def valid_month(month):
+    if month and month.isdigit():
+        month = int(month)
+        if month >= 1 and month <= 12:
+            return month
+
+def valid_day(day):
+    if day and day.isdigit():
+        day = int(day)
+        if day >= 1 and day <= 31:
+            return day
+
+def valid_year(year):
+    if year and year.isdigit():
+        year = int(year)
+        if year >= 1900 and year <= 2020:
+            return year
+
 class MainPage(webapp2.RequestHandler):
-    from valid-day import valid_day
-    from validatemonth2 import valid_month
-    from valid-year import valid_year
     
+    def write_form(self, error="", month="", day="", year=""):
+        self.response.out.write(form % {"error123": error,
+                                        "month": month,
+                                        "day": day,
+                                        "year": year})
 
     def get(self):
-        self.response.headers['Content-Type'] = 'text/html'
-        self.response.out.write(form)
+        self.write_form()
 
     def post(self):
         user_month = valid_month(self.request.get('month'))
-        user_day = valid_day(self.request.get('day'))
+        user_day = valid_month(self.request.get('date'))
         user_year = valid_year(self.request.get('year'))
         
         if not (user_month and user_day and user_year):
-            self.response.out.write(form)
+            self.write_form("not valid")
         else:
             self.response.out.write("Correct!")
-        
-        
- 
 
-        
+
 
 app = webapp2.WSGIApplication([('/', MainPage)],
                               debug=True)
