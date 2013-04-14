@@ -6,7 +6,4 @@ threadsafe: true
 
 handlers:
 - url: /.*
-  script: hello.app
-  
-- url: /test1.*
-  script: test1.app
+  script: rot13.app
