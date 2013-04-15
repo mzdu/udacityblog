@@ -12,5 +12,14 @@ def dict_change(dict1):
 print dict_change(dict)
 print dict
 
+# this actually will add 'ww' = 121 to the dictionary
+dict['ww'] = 121
+print dict
+
 #{'aa': 0, 'cc': 4, 'dd': 6, 'bb': 2}
 #{'aa': 0, 'cc': 4, 'dd': 6, 'bb': 2}
+
+print dict.get('dd')
+print '==================='
+
+print dict[0]
