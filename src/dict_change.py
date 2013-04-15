@@ -21,5 +21,5 @@ print dict
 
 print dict.get('dd')
 print '==================='
-
-print dict[0]
+dict['ww'] = 122
+print dict
