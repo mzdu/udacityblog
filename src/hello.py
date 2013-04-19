@@ -1,6 +1,8 @@
 import webapp2
+import logging
 
 form = '''
+<link href="/static/style.css" rel="stylesheet" type="text/css">
 <form method="POST">
     What is your birthday? <br />
     <label>Month
@@ -46,7 +48,7 @@ class ThanksHandler(webapp2.RequestHandler):
 
 class MainPage(webapp2.RequestHandler):
     
-    def write_form(self, error="", month="1", day="1", year="2013"):
+    def write_form(self, error="", month=" ", day=" ", year=" "):
         self.response.out.write(form % {"error123": error,
                                         "month": month,
                                         "day": day,
@@ -54,6 +56,7 @@ class MainPage(webapp2.RequestHandler):
 
     def get(self):
         self.write_form()
+        logging.info('get loaded')
 
     def post(self):
         user_month = valid_month(self.request.get('month'))

@@ -1,12 +1,9 @@
-application: udacityblog
+application: simplest-app
 version: 1
 runtime: python27
 api_version: 1
 threadsafe: true
 
 handlers:
-- url: /static
-  static_dir: staticaa
-
 - url: /.*
-  script: hello.app
+  script: simple.py
