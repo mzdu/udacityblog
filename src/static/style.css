@@ -1,7 +1,10 @@
 body{background-color: #b6cce8}
+#indexheader{font-size:25pt; padding-bottom:25px}
 .error{color:red}
-textarea{width:200px; height:200px}
-li{display:inline}
+textarea{width:50%; height:300px}
+.titleinput{width: 300px}
+ul{text-align: right}
+li{display:inline; padding:10px}
 .topbanner {color: red}
 .topbanner a{text-decoration:none}
 
