@@ -1,12 +1,12 @@
 =========GET VS POST=============
 
-GET·½·¨ÓÃÀ´²éÑ¯ÄÚÈİ    ÓĞURL³¤¶ÈÏŞÖÆ     »áÔÚcacheÀïÓĞ´æ     »áÏÔÊ¾ÃÜÂë  ÊÇÄ¬ÈÏµÄform method
+GETæ–¹æ³•ç”¨æ¥æŸ¥è¯¢å†…å®¹    æœ‰URLé•¿åº¦é™åˆ¶     ä¼šåœ¨cacheé‡Œæœ‰å­˜     ä¼šæ˜¾ç¤ºå¯†ç   æ˜¯é»˜è®¤çš„form method
 
-POST·½·¨ÊÇÀ´ĞŞ¸ÄÄÚÈİ    ÒòÎªÊÇÒş²ØµÄËùÒÔÃ»ÓĞURLÏŞÖÆ     ²»»á´æÔÚcacheÀï
+POSTæ–¹æ³•æ˜¯æ¥ä¿®æ”¹å†…å®¹    å› ä¸ºæ˜¯éšè—çš„æ‰€ä»¥æ²¡æœ‰URLé™åˆ¶     ä¸ä¼šå­˜åœ¨cacheé‡Œ
 
 =======input type=========
 input type
-="Password"   ÔÚÊ¹ÓÃGET·½·¨Ê±£¬»áÏÔÊ¾ÃÜÂëÄÚÈİ°¡£¡£¡£¡£¡
+="Password"   åœ¨ä½¿ç”¨GETæ–¹æ³•æ—¶ï¼Œä¼šæ˜¾ç¤ºå¯†ç å†…å®¹å•Šï¼ï¼ï¼ï¼
 ="text"
 ="checkbox"   /play.html?r=on&s=on
 ="radio"       give them the same name   value="first"
@@ -30,7 +30,7 @@ input type
 </form>
 
 =========Dropdowns========
-¼´Ê¹Ã»ÓĞvalueÊ±ºò£¬Ò²¿ÉÒÔ£¡ Ñ¡ÔñµÚ¶ş¸öºó q=B
+å³ä½¿æ²¡æœ‰valueæ—¶å€™ï¼Œä¹Ÿå¯ä»¥ï¼ é€‰æ‹©ç¬¬äºŒä¸ªå q=B
 <form>
 	<select name="q">
 		<option value="first">A</option>
@@ -39,7 +39,7 @@ input type
 	</select>
 </form>
 ========Validation===========
-·ÀÖ¹ÈÎÒâµÄ´«ÈëÊı¾İ£¬ËùÒÔÎÒÃÇĞèÒªvalidate our data
+é˜²æ­¢ä»»æ„çš„ä¼ å…¥æ•°æ®ï¼Œæ‰€ä»¥æˆ‘ä»¬éœ€è¦validate our data
 
 ==========String substitution============
 given_string = "I think %s is a perfectly %s thing to do in public."
@@ -47,8 +47,8 @@ given_string = "I think %s is a perfectly %s thing to do in public."
 def sub1(s, t):
     return given_string % (s, t)
     
-µ±Ê¹ÓÃdictionary×÷Îª²ÎÊıÊ±
+å½“ä½¿ç”¨dictionaryä½œä¸ºå‚æ•°æ—¶
 <div style="color: red">%(error123)s</div>
 
-ÊÇÈ¥Õâ¸ö´Êµä ÕÒ±ğÃûÎªerror123µÄÏîµÄÊı¾İ   {"error123": error}  
+æ˜¯å»è¿™ä¸ªè¯å…¸ æ‰¾åˆ«åä¸ºerror123çš„é¡¹çš„æ•°æ®   {"error123": error}  
 
