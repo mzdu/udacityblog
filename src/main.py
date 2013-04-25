@@ -9,12 +9,12 @@ template_dir = os.path.join(os.path.dirname(__file__), 'templates')
 jinja_env = jinja2.Environment(loader = jinja2.FileSystemLoader(template_dir), 
                                autoescape = True)
 class Article(db.Model):
+    #if one of these required=True propery fail to input, the whole transaction will not be injected into datastore
     #indicate title is String type
     title = db.StringProperty(required = True)
+    body = db.TextProperty(required = True)
     #set it to current time
     created = db.DateTimeProperty(auto_now_add = True)
-    
-    body = db.TextProperty(required = True)
 
 class Handler(webapp2.RequestHandler):
     
@@ -31,23 +31,43 @@ class Handler(webapp2.RequestHandler):
     def render_page(self, articles=""):
 #         arts = db.GqlQuery("select * from Art order by created DESC")
 #         self.render("index.html", title1=title, art1=art, error1=error, arts1=arts)
-        
-        self.render(page, articles=articles)
+        pass
+#         self.render(page, articles=articles)
         
         
 class AddBlog(Handler):
     def get(self):
-        self.render("addBlog.html")
+        self.render("/addBlog.html")
     
     def post(self):
+        #get(name from html page)
+        ti1 = self.request.get("title")
+        art1 = self.request.get("article")
+
+        if ti1 and art1:
+            #title and body are keys from Article(db.Model)  title, body
+            a = Article(title=ti1, body=art1)
+            a.put()
+            logging.info("injection successful")
+            self.redirect("/success")
         
+        else:
+            errmsg = "error, one of these texts need to be filled."
+            self.render("/addBlog.html", title1=ti1, article1=art1, error=errmsg)
+
+class SuccessHandler(Handler):
+    def get(self):
+        self.render("success.html")
         
+    def post(self):
         self.redirect("/")
+
         
 class MainPage(Handler):
     def get(self):
-        self.render("index.html")
-#         articles = db.GqlQuery("select * from Articles order by created DESC")
+        articles = db.GqlQuery("select * from Article order by created DESC")
+        self.render("index.html", Articles = articles)
+        
 #         self.render_page("index.html", articles = articles)         
     def post(self):
         self.write("this is a post main page")
@@ -64,4 +84,5 @@ class MainPage(Handler):
 #             self.render_page(title2, art2, error2)
     
 app = webapp2.WSGIApplication([('/', MainPage),
-                               ('/addblog', AddBlog)], debug=True)
+                               ('/addblog', AddBlog),
+                               ('/success', SuccessHandler)], debug=True)

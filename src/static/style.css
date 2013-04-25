@@ -2,4 +2,8 @@ body{background-color: #b6cce8}
 .error{color:red}
 textarea{width:200px; height:200px}
 li{display:inline}
+.topbanner {color: red}
 .topbanner a{text-decoration:none}
+
+.articlecreated{font-size: 12px; color: green;}
+.artbody{width:300px;}
