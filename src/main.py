@@ -55,13 +55,20 @@ class AddBlog(Handler):
             errmsg = "error, one of these texts need to be filled."
             self.render("/addBlog.html", title1=ti1, article1=art1, error=errmsg)
 
+class EditBlog(Handler):
+    def get(self):
+        self.write("this is edit blog get")
+    
+    def post(self):
+        pass
+
+
 class SuccessHandler(Handler):
     def get(self):
         self.render("success.html")
         
     def post(self):
         self.redirect("/")
-
         
 class MainPage(Handler):
     def get(self):
@@ -85,4 +92,5 @@ class MainPage(Handler):
     
 app = webapp2.WSGIApplication([('/', MainPage),
                                ('/addblog', AddBlog),
+                               ('/editblog', EditBlog),
                                ('/success', SuccessHandler)], debug=True)

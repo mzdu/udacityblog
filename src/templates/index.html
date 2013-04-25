@@ -4,7 +4,9 @@
 
 {% for art in Articles %}
 	<div class="articlewrapper">
-		<div class="articletitle">{{art.title}}</div> 
+		<div class="articletitle">
+			<span>{{art.title}}</span>
+			<span class="artedit"><a href="/editblog">Edit</a></span></div> 
 		<div class="articlecreated">{{art.created}}</div>
 		<div class="artbody">
 		<pre>{{art.body}}</pre>
