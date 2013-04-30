@@ -8,13 +8,18 @@ from google.appengine.ext import db
 template_dir = os.path.join(os.path.dirname(__file__), 'templates')
 jinja_env = jinja2.Environment(loader = jinja2.FileSystemLoader(template_dir), 
                                autoescape = True)
+
+
+
 class Article(db.Model):
     #if one of these required=True propery fail to input, the whole transaction will not be injected into datastore
     #indicate title is String type
+    
     title = db.StringProperty(required = True)
     body = db.TextProperty(required = True)
     #set it to current time
     created = db.DateTimeProperty(auto_now_add = True)
+
 
 class Handler(webapp2.RequestHandler):
     
@@ -33,7 +38,7 @@ class Handler(webapp2.RequestHandler):
 #         self.render("index.html", title1=title, art1=art, error1=error, arts1=arts)
         pass
 #         self.render(page, articles=articles)
-        
+
         
 class AddBlog(Handler):
     def get(self):
@@ -55,13 +60,6 @@ class AddBlog(Handler):
             errmsg = "error, one of these texts need to be filled."
             self.render("/addBlog.html", title1=ti1, article1=art1, error=errmsg)
 
-class EditBlog(Handler):
-    def get(self):
-        self.write("this is edit blog get")
-    
-    def post(self):
-        pass
-
 
 class SuccessHandler(Handler):
     def get(self):
@@ -72,7 +70,9 @@ class SuccessHandler(Handler):
         
 class MainPage(Handler):
     def get(self):
+
         articles = db.GqlQuery("select * from Article order by created DESC")
+        
         self.render("index.html", Articles = articles)
         
 #         self.render_page("index.html", articles = articles)         
@@ -92,5 +92,4 @@ class MainPage(Handler):
     
 app = webapp2.WSGIApplication([('/', MainPage),
                                ('/addblog', AddBlog),
-                               ('/editblog', EditBlog),
                                ('/success', SuccessHandler)], debug=True)

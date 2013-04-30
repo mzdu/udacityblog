@@ -1,12 +1,12 @@
 {% extends "_base.html" %}
 {% block bodyContent %}
-<div id="indexheader"><center>MZ's Blog</center></div>
+<div id="indexheader"><center>MZ's Lab</center></div>
 
 {% for art in Articles %}
 	<div class="articlewrapper">
 		<div class="articletitle">
 			<span>{{art.title}}</span>
-			<span class="artedit"><a href="/editblog">Edit</a></span></div> 
+			<span class="artedit"><a href="/editblog/{{ikey}}">Edit</a></span></div> 
 		<div class="articlecreated">{{art.created}}</div>
 		<div class="artbody">
 		<pre>{{art.body}}</pre>
