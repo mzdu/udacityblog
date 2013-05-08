@@ -57,41 +57,17 @@ class AddBlog(Handler):
             a = Article(title=ti1, body=art1)
             a.put()
             logging.info("injection successful")
-            self.redirect("/success")
+            self.redirect("/")
         
         else:
             errmsg = "error, one of these texts need to be filled."
             self.render("/addBlog.html", title1=ti1, article1=art1, error=errmsg)
-
-
-class SuccessHandler(Handler):
-    def get(self):
-        self.render("success.html")
-        
-    def post(self):
-        self.redirect("/")
         
 class MainPage(Handler):
     def get(self):
         articles = db.GqlQuery("select * from Article order by created DESC")
         self.render("index.html", Articles = articles)
-        
-        
-        #setup cookies
-        visits = self.request.cookies.get('visits', '0')
-        visits = int(visits) + 1
-        self.response.headers.add_header('Set-cookie', 'visits=%s' % visits)
-        self.write("you have been here %s times." % visits)
-        # CRC32 - checksums, fast to prevent cookies from modification
-        # MD5 - fast, secure kind of, for limited input
-        # SHA1 - secure
-        # SHA256 - pretty good, but slower
-        '''
-        import hashlib
-        hashlib.md5("hello").hexdigit()
-        ==> '23u2839280380023...'
-        '''
-        
+    
         
         
         
@@ -111,5 +87,4 @@ class MainPage(Handler):
 #             self.render_page(title2, art2, error2)
     
 app = webapp2.WSGIApplication([('/', MainPage),
-                               ('/addblog', AddBlog),
-                               ('/success', SuccessHandler)], debug=True)
+                               ('/addblog', AddBlog)], debug=True)
