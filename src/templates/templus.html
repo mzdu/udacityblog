@@ -1,0 +1,30 @@
+{% extends "_base.html" %}
+{% block bodyContent %}
+
+<form method="post" action="">
+	<label>
+	<div>Please add your article here</div>
+	<textarea name="artname" value="{{artvalue}}"></textarea>
+	</label>
+	
+	<div class="err">{{error}}</div>
+	
+	<input type="submit" />
+	
+</form>
+
+{% for art in Articles %}
+	<div class="articlewrapper">
+		<div class="articletitle">
+			<span>{{art.title}}</span>
+			<span class="artedit"><a href="/editblog/{{ikey}}">Edit</a></span></div> 
+		<div class="articlecreated">{{art.created}}</div>
+		<div class="artbody">
+		<pre>{{art.body}}</pre>
+		</div>
+		
+		<hr />
+	</div>
+{% endfor %}
+
+{% endblock %}

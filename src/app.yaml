@@ -11,8 +11,8 @@ handlers:
 - url: /addblog
   script: main.app
 
-- url: /success
-  script: main.app
+- url: /templatetest
+  script: templus.app
 
 - url: /.*
   script: main.app
