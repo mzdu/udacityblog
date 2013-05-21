@@ -2,7 +2,10 @@ import os
 import webapp2
 import jinja2
 import logging
+import nltk
+
 import datamodel
+
 
 from google.appengine.ext import db
 
