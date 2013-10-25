@@ -45,7 +45,7 @@ class Handler(webapp2.RequestHandler):
         
 class AddBlog(Handler):
     def get(self):
-        self.render("/addBlog.html")
+        self.render("/addBlog.html",title1='start your title here', article1='arti', error='err111')
     
     def post(self):
         #get(name from html page)
