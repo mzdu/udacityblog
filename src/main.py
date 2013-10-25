@@ -26,9 +26,6 @@ class Handler(webapp2.RequestHandler):
     def write(self, *a, **kw):
         self.response.out.write(*a, **kw)
         
-        
-        
-        
     def render_str(self, template, **params):
         t = jinja_env.get_template(template)
         return t.render(params)
@@ -45,7 +42,7 @@ class Handler(webapp2.RequestHandler):
         
 class AddBlog(Handler):
     def get(self):
-        self.render("/addBlog.html",title1='start your title here', article1='arti', error='err111')
+        self.render("/addBlog.html")
     
     def post(self):
         #get(name from html page)
@@ -57,7 +54,7 @@ class AddBlog(Handler):
             a = Article(title=ti1, body=art1)
             a.put()
             logging.info("injection successful")
-            self.redirect("/")
+            self.redirect('/')
         
         else:
             errmsg = "error, one of these texts need to be filled."
