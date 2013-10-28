@@ -54,7 +54,7 @@ class AddBlog(Handler):
             a = Article(title=ti1, body=art1)
             a.put()
             logging.info("injection successful")
-            self.redirect('/')
+            self.redirect('/',True)
         
         else:
             errmsg = "error, one of these texts need to be filled."
